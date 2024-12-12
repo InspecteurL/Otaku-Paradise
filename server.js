@@ -15,6 +15,7 @@ const itemSchema = new mongoose.Schema({
     title: String,
     description: String,
     imageUrl: String,
+    sectionId: String, // Ajoute un identifiant de section
 });
 
 const Item = mongoose.model('Item', itemSchema);
@@ -42,6 +43,14 @@ app.put('/api/items/:id', async (req, res) => {
 app.delete('/api/items/:id', async (req, res) => {
     await Item.findByIdAndDelete(req.params.id);
     res.status(204).send();
+});
+
+// Endpoint pour mettre à jour une section
+app.put('/api/sections/:sectionId', async (req, res) => {
+    const { sectionId } = req.params;
+    const { content } = req.body;
+    await Item.updateMany({ sectionId }, { content });
+    res.json({ message: 'Section updated successfully' });
 });
 
 app.listen(PORT, () => {
