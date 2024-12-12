@@ -402,7 +402,6 @@
             <button class="back-button" onclick="goBack()">Retour</button>
         </div>
     </main>
-
     <script>
         // Récupérer l'utilisateur connecté depuis la session
         const user = JSON.parse(sessionStorage.getItem('user'));
@@ -441,8 +440,11 @@
             const updatedContent = editor.value;
             section.innerHTML = updatedContent;
 
+            // Récupérer l'ID de la section
+            const sectionId = section.dataset.sectionId;
+
             // Envoyer les données mises à jour au serveur pour sauvegarde persistante
-            fetch('/api/items', {
+            fetch(`/api/sections/${sectionId}`, {
                 method: 'PUT',
                 headers: {
                     'Content-Type': 'application/json'
@@ -473,9 +475,6 @@
             window.location.href = 'login.html';
         }
     </script>
-
-
-
 
 </body>
 </html>
