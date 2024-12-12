@@ -49,6 +49,8 @@ app.delete('/api/items/:id', async (req, res) => {
 app.put('/api/sections/:sectionId', async (req, res) => {
     const { sectionId } = req.params;
     const { content } = req.body;
+
+    // Mise à jour des contenus d'une section spécifique
     await Item.updateMany({ sectionId }, { content });
     res.json({ message: 'Section updated successfully' });
 });
