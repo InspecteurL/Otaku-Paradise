@@ -1,0 +1,481 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Otaku Paradise</title>
+    <style>
+        .animoment {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+            gap: 20px;
+            text-align: center;
+        }
+        .animoment img {
+            max-width: 70%;
+            height: auto;
+            transition: transform 0.5s ease;
+        }
+        .animoment img:hover {
+            transform: scale(1.05);
+        }
+        .animoment .content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .animoment .text {
+            flex: 1;
+            min-width: 300px;
+            text-align: center;
+        }
+        @media (max-width: 768px) {
+            .animoment {
+                flex-direction: column;
+                align-items: center;
+            }
+            .animoment img {
+                max-width: 100%;
+            }
+            .animoment .text {
+                min-width: 100%;
+            }
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #300000;
+            color: grey;
+            
+
+            
+        }
+        
+
+        nav {
+            background-color: #2c3e50;
+            padding: 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        nav a {
+            color: white;
+            text-decoration: none;
+            padding: 10px;
+        }
+        nav h1 {
+            color: white;
+        }
+        nav img {
+            border-radius: 50%;
+        }
+        nav input[type="text"] {
+            padding: 5px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            width: 200px;
+        }
+        nav button {
+            padding: 5px 10px;
+            border-radius: 5px;
+            border: none;
+            background-color: #e74c3c;
+            color: white;
+            cursor: pointer;
+        }
+        nav button:hover {
+            background-color: #c0392b;
+        }
+
+        .momentpop img {
+            width: 400px;
+            height: auto;
+        }
+        .momentpop .animoment h3 {
+            text-align: right;
+            margin-right: 20px;
+        }
+
+        .imagerecom img, .imageanima img, .cafeanime img {
+            width: 200px;
+            height: 300px;
+            border-radius: 10px;
+            object-fit: cover;
+            margin: 10px;
+        }
+        .imagerecom, .imageanima, .cafeanime {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+        }
+        .imagerecom h3, .imageanima h3, .cafeanime h3 {
+            text-align: center;
+            margin-top: 10px;
+            margin-bottom: 0;
+        }
+        .recommandations h2, .animation h2, .cafe h2 {
+            text-align: center;
+        }
+        .infosup span {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        .infosup {
+            display: flex;
+            justify-content: space-between;
+        }
+        .infosup ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0 10px;
+        }
+
+        @media (max-width: 768px) {
+            .momentpop img {
+                width: 100%;
+            }
+            .imagerecom img, .imageanima img, .cafeanime img {
+                width: 100%;
+                height: auto;
+                border-radius: 0;
+            }
+            nav {
+                flex-direction: column;
+            }
+        }
+
+        section {
+            border-top: 2px solid #ddd;
+            padding-top: 20px;
+        }
+
+        .momentpop p, .recommandations p, .animation p, .cafe p {
+            text-align: justify;
+            margin: 10px 0;
+        }
+
+        .recommandations img {
+            transition: transform 0.4s ease;
+        }
+        .recommandations img:hover {
+            transform: scale(1.09);
+        }
+
+        .animation img {
+            transition: transform 0.4s ease;
+        }
+        .animation img:hover {
+            transform: scale(1.09);
+        }
+
+        .cafeanime img {
+            transition: transform 0.4s ease;
+        }
+        .cafeanime img:hover {
+            transform: scale(1.09);
+        }
+
+        #anime-details {
+            text-align: center;
+            margin-top: 20px;
+        }
+        #anime-details img {
+            max-width: 300px;
+            height: auto;
+        }
+        #anime-details button {
+            margin: 10px;
+            padding: 10px 20px;
+            background-color: #e74c3c;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        #anime-details button:hover {
+            background-color: #c0392b;
+        }
+        .back-button {
+            display: block;
+            margin: 20px auto;
+            padding: 10px 20px;
+            background-color: #e74c3c;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        .back-button:hover {
+            background-color: #c0392b;
+        }
+    </style>
+</head>
+<body>
+   <nav>
+    <a href="#">Accueil</a>
+    <h1>Otaku Paradise</h1>
+    <img src="sasuke.png" alt="Sasuke" width="100">
+    <input type="text" placeholder="Rechercher...">
+    <button type="submit">Chercher</button>
+    <button onclick="logout()">Se déconnecter</button>
+   </nav>
+
+   <main>
+   <section class="momentpop" id="momentpop">
+    <div class="animoment" id="animoment">
+        <div class="content">
+            <h2>Anime du moment</h2>
+            <h3>DAN DA DAN</h3>
+            <img src="https://fr.web.img6.acsta.net/img/34/d5/34d559cbab6cd1245e84d812d9056ef2.jpg" alt="DAN DA DAN" width="300">
+        </div>
+        <div class="text">
+            <p>Quand Momo, issue d'une lignée de médiums, rencontre son camarade de classe Okarun, fasciné par l’occulte, ils se disputent. Lorsqu'il s'avère que les deux phénomènes sont bien réels, Momo réveille en elle un pouvoir caché tandis qu'une malédiction s'abat sur Okarun. Ensemble, ils doivent affronter les forces du paranormal qui menacent notre monde...</p>
+        </div>
+    </div>
+   </section>
+
+   <section class="recommandations" id="recommandations">
+    <h2>Nos recommandations</h2>
+    <div class="imagerecom" id="imagerecom">
+        <div>
+            <img src="https://m.media-amazon.com/images/M/MV5BZjI1YjZiMDUtZTI3MC00YTA5LWIzMmMtZmQ0NTZiYWM4NTYwXkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg" alt="Steins; Gate" onclick="showAnimeDetails('Steins; Gate')">
+            <h3>Steins; Gate</h3>
+        </div>
+        <div>
+            <img src="https://m.media-amazon.com/images/M/MV5BZWQ2YmI5NWMtZTY2Mi00MGUxLWFhMmEtYjVjZjMwOTNkOThjXkEyXkFqcGc@._V1_QL75_UY281_CR4,0,190,281_.jpg" alt="Erased" onclick="showAnimeDetails('Erased')">
+            <h3>Erased</h3>
+        </div>
+        <div>
+            <img src="https://static.zerochan.net/Kakehashi.Mirai.full.3436286.png" alt="Platinum End" onclick="showAnimeDetails('Platinum End')">
+            <h3>Platinum End</h3>
+        </div>
+        <div>
+            <img src="https://dailymoogle.fr/wp-content/uploads/2019/05/Mob-Psycho-100.jpg" alt="Mob Psycho 100" onclick="showAnimeDetails('Mob Psycho 100')">
+            <h3>Mob Psycho 100</h3>
+        </div>
+    </div>
+   </section>
+
+   <section class="animation" id="animation">
+    <h2>Meilleure animation</h2>
+    <div class="imageanima" id="imageanima">
+        <div>
+            <img src="https://static.wixstatic.com/media/38779a_44a752269ee243529fe9458e4f75171b~mv2.jpg/v1/fill/w_480,h_720,al_c,q_80,usm_0.66_1.00_0.01,enc_auto/38779a_44a752269ee243529fe9458e4f75171b~mv2.jpg" alt="Jujutsu Kaisen" onclick="showAnimeDetails('Jujutsu Kaisen')">
+            <h3>Jujutsu Kaisen</h3>
+        </div>
+        <div>
+            <img src="https://i.ebayimg.com/00/s/ODk5WDYyMQ==/z/n1EAAOSw-11fmd5w/$_57.PNG?set_id=8800005007" alt="Demon Slayer" onclick="showAnimeDetails('Demon Slayer')">
+            <h3>Demon Slayer</h3>
+        </div>
+        <div>
+            <img src="https://images-na.ssl-images-amazon.com/images/I/61ckKCrioHL._UL500_.jpg" alt="Solo Leveling" onclick="showAnimeDetails('Solo Leveling')">
+            <h3>Solo Leveling</h3>
+        </div>
+        <div>
+            <img src="https://prod-printler-front-as.azurewebsites.net/media/photo/197152-1.jpg?mode=crop&width=638&height=900&rnd=0.0.1" alt="Mob Psycho 100" onclick="showAnimeDetails('Mob Psycho 100')">
+            <h3>Mob Psycho 100</h3>
+        </div>
+    </div>
+   </section>
+
+   <section class="cafe" id="cafe">
+    <h2>Anime pour votre café</h2>
+    <div class="cafeanime" id="cafeanime">
+        <div>
+            <img src="https://pics.filmaffinity.com/sakamoto_desu_ga-510534118-large.jpg" alt="Sakamoto desu ga" onclick="showAnimeDetails('Sakamoto desu ga')">
+            <h3>Sakamoto desu ga</h3>
+        </div>
+        <div>
+            <img src="https://fr.web.img5.acsta.net/r_1280_720/img/99/ee/99ee4df3b2c300a1399c8e3b45eece92.jpg" alt="Wind Breaker" onclick="showAnimeDetails('Wind Breaker')">
+            <h3>Wind Breaker</h3>
+        </div>
+        <div>
+            <img src="https://fr.web.img6.acsta.net/r_1280_720/pictures/24/03/13/10/33/3507415.jpg" alt="Call of the Night" onclick="showAnimeDetails('Call of the Night')">
+            <h3>Call of the Night</h3>
+        </div>
+        <div>
+            <img src="https://www.justwatch.com/images/poster/306103347/s718/hells-paradise.jpg" alt="Hell's Paradise" onclick="showAnimeDetails('Hells Paradise')">
+            <h3>Hell's Paradise</h3>
+        </div>
+    </div>
+   </section>
+
+   <!-- Ajout du div pour les détails de l'anime -->
+   <div id="anime-details" style="display: none;">
+       <img id="anime-image" src="" alt="">
+       <h3 id="anime-title"></h3>
+       <p id="anime-description"></p>
+       <button onclick="addToCollection('En cours')">En cours</button>
+       <button onclick="addToCollection('Envie de Voir')">Envie de Voir</button>
+       <button onclick="addToCollection('En pause')">En pause</button>
+       <button onclick="addToCollection('Abandonné')">Abandonné</button>
+       <button onclick="addToCollection('Terminé')">Terminé</button>
+       <button class="back-button" onclick="goBack()">Retour</button>
+   </div>
+   </main>
+
+   <script>
+        const animeData = {
+            'Steins; Gate': {
+                image: 'https://m.media-amazon.com/images/M/MV5BZjI1YjZiMDUtZTI3MC00YTA5LWIzMmMtZmQ0NTZiYWM4NTYwXkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg',
+                description: 'Steins;Gate est une série de science-fiction où un groupe d’amis parvient à modifier leur passé en envoyant des messages texte via un four à micro-ondes.'
+            },
+            'Erased': {
+                image: 'https://m.media-amazon.com/images/M/MV5BZWQ2YmI5NWMtZTY2Mi00MGUxLWFhMmEtYjVjZjMwOTNkOThjXkEyXkFqcGc@._V1_QL75_UY281_CR4,0,190,281_.jpg',
+                description: 'Erased suit Satoru Fujinuma, un homme qui possède une capacité unique lui permettant de retourner dans le passé pour empêcher des tragédies.'
+            },
+            'Platinum End': {
+                image: 'https://static.zerochan.net/Kakehashi.Mirai.full.3436286.png',
+                description: 'Platinum End suit Mirai Kakehashi, un jeune homme sauvé par un ange qui lui donne des pouvoirs divins pour participer à une bataille céleste.'
+            },
+            'Mob Psycho 100': {
+                image: 'https://dailymoogle.fr/wp-content/uploads/2019/05/Mob-Psycho-100.jpg',
+                description: 'Mob Psycho 100 suit Shigeo "Mob" Kageyama, un adolescent doté de puissants pouvoirs psychiques qu’il doit contrôler pour éviter des catastrophes.'
+            },
+            'Jujutsu Kaisen': {
+                image: 'https://static.wixstatic.com/media/38779a_44a752269ee243529fe9458e4f75171b~mv2.jpg/v1/fill/w_480,h_720,al_c,q_80,usm_0.66_1.00_0.01,enc_auto/38779a_44a752269ee243529fe9458e4f75171b~mv2.jpg',
+                description: 'Jujutsu Kaisen suit Yuji Itadori, un lycéen qui rejoint une école d’exorcisme pour combattre les malédictions et protéger les innocents.'
+            },
+            'Demon Slayer': {
+                image: 'https://i.ebayimg.com/00/s/ODk5WDYyMQ==/z/n1EAAOSw-11fmd5w/$_57.PNG?set_id=8800005007',
+                description: 'Demon Slayer suit Tanjiro Kamado, un jeune garçon déterminé à venger sa famille et à sauver sa sœur transformée en démon.'
+            },
+            'Solo Leveling': {
+                image: 'https://images-na.ssl-images-amazon.com/images/I/61ckKCrioHL._UL500_.jpg',
+                description: 'Solo Leveling suit Sung Jin-Woo, un chasseur de bas rang qui découvre un pouvoir mystérieux lui permettant de devenir le chasseur le plus puissant.'
+            },
+            'Sakamoto desu ga': {
+                image: 'https://pics.filmaffinity.com/sakamoto_desu_ga-510534118-large.jpg',
+                description: 'Sakamoto desu ga suit les aventures de Sakamoto, l’étudiant le plus cool et parfait du lycée, face aux défis quotidiens.'
+            },
+            'Wind Breaker': {
+                image: 'https://fr.web.img5.acsta.net/r_1280_720/img/99/ee/99ee4df3b2c300a1399c8e3b45eece92.jpg',
+                description: 'Wind Breaker raconte l’histoire de Jay, un lycéen talentueux en cyclisme, et ses amis alors qu’ils participent à des courses palpitantes.'
+            },
+            'Call of the Night': {
+                image: 'https://fr.web.img6.acsta.net/r_1280_720/pictures/24/03/13/10/33/3507415.jpg',
+                description: 'Call of the Night suit Ko Yamori, un adolescent insomniac qui explore la vie nocturne et rencontre une mystérieuse vampire.'
+            },
+            'Hell\'s Paradise': {
+                image: 'https://www.justwatch.com/images/poster/306103347/s718/hells-paradise.jpg',
+                description: 'Hell\'s Paradise suit Gabimaru, un ninja condamné à mort, qui part en quête d’un élixir légendaire sur une île mystérieuse pour obtenir sa liberté.'
+            }
+        };
+
+        function showAnimeDetails(anime) {
+            document.getElementById('momentpop').style.display = 'none';
+            document.getElementById('recommandations').style.display             = 'none';
+            document.getElementById('animation').style.display = 'none';
+            document.getElementById('cafe').style.display = 'none';
+            document.getElementById('anime-details').style.display = 'block';
+
+            const animeDetail = animeData[anime];
+            document.getElementById('anime-image').src = animeDetail.image;
+            document.getElementById('anime-title').innerText = anime;
+            document.getElementById('anime-description').innerText = animeDetail.description;
+        }
+
+        function addToCollection(status) {
+            alert(`Anime ajouté à votre collection avec le statut : ${status}`);
+        }
+
+        function goBack() {
+            document.getElementById('momentpop').style.display = 'block';
+            document.getElementById('recommandations').style.display = 'block';
+            document.getElementById('animation').style.display = 'block';
+            document.getElementById('cafe').style.display = 'block';
+            document.getElementById('anime-details').style.display = 'none';
+        }
+   </script>
+        <!-- Ajout du div pour les détails de l'anime -->
+        <div id="anime-details" style="display: none;">
+            <img id="anime-image" src="" alt="">
+            <h3 id="anime-title"></h3>
+            <p id="anime-description"></p>
+            <button onclick="addToCollection('En cours')">En cours</button>
+            <button onclick="addToCollection('Envie de Voir')">Envie de Voir</button>
+            <button onclick="addToCollection('En pause')">En pause</button>
+            <button onclick="addToCollection('Abandonné')">Abandonné</button>
+            <button onclick="addToCollection('Terminé')">Terminé</button>
+            <button class="back-button" onclick="goBack()">Retour</button>
+        </div>
+    </main>
+
+    <script>
+        // Récupérer l'utilisateur connecté depuis la session
+        const user = JSON.parse(sessionStorage.getItem('user'));
+
+        // Rediriger vers la page de connexion si non connecté
+        if (!user) {
+            window.location.href = 'login.html';
+        }
+
+        // Afficher les boutons d'édition pour les admins
+        document.addEventListener('DOMContentLoaded', () => {
+            if (user.role === 'admin') {
+                const sections = document.querySelectorAll('section');
+                sections.forEach(section => {
+                    const editBtn = document.createElement('button');
+                    editBtn.textContent = 'Modifier';
+                    editBtn.className = 'edit-button';
+                    editBtn.onclick = () => editContent(section);
+                    section.appendChild(editBtn);
+                });
+            }
+        });
+
+        function editContent(section) {
+            const content = section.innerHTML;
+            section.innerHTML = `<textarea class="editor">${content}</textarea>`;
+            const saveBtn = document.createElement('button');
+            saveBtn.textContent = 'Sauvegarder';
+            saveBtn.className = 'save-button';
+            saveBtn.onclick = () => saveContent(section);
+            section.appendChild(saveBtn);
+        }
+
+        function saveContent(section) {
+            const editor = section.querySelector('.editor');
+            const updatedContent = editor.value;
+            section.innerHTML = updatedContent;
+
+            // Envoyer les données mises à jour au serveur pour sauvegarde persistante
+            fetch('/api/items', {
+                method: 'PUT',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ content: updatedContent })
+            })
+            .then(response => response.json())
+            .then(data => {
+                console.log('Success:', data);
+            })
+            .catch((error) => {
+                console.error('Error:', error);
+            });
+        }
+
+        function goBack() {
+            document.getElementById('momentpop').style.display = 'block';
+            document.getElementById('recommandations').style.display = 'block';
+            document.getElementById('anime-details').style.display = 'none';
+        }
+
+        function addToCollection(status) {
+            alert(`Anime ajouté à votre collection avec le statut : ${status}`);
+        }
+
+        function logout() {
+            sessionStorage.removeItem('user');
+            window.location.href = 'login.html';
+        }
+    </script>
+
+
+
+
+</body>
+</html>
